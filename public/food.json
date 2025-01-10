@@ -1,0 +1,47 @@
+[
+  {
+    "author": "Admin",
+    "date": "May 16, 2023",
+    "readTime": "2 min read",
+    "title": "A Beginner’s Guide to Buying Fish",
+    "subtitle": "Create a blog post subtitle that summarizes your post in a few short, punchy sentences and entices your audience to continue reading...",
+    "views": 0,
+    "comments": 0
+  },
+  {
+    "author": "Admin",
+    "date": "May 20, 2023",
+    "readTime": "3 min read",
+    "title": "Top 5 Freshwater Fish for Your Aquarium",
+    "subtitle": "Discover the most popular freshwater fish for beginners and why they make excellent additions to your aquarium.",
+    "views": 15,
+    "comments": 2
+  },
+  {
+    "author": "Admin",
+    "date": "May 25, 2023",
+    "readTime": "4 min read",
+    "title": "How to Spot Fresh Fish at the Market",
+    "subtitle": "Learn how to identify fresh fish with these simple tips that ensure the best quality for your meals.",
+    "views": 50,
+    "comments": 5
+  },
+  {
+    "author": "Admin",
+    "date": "May 30, 2023",
+    "readTime": "2 min read",
+    "title": "Why Sustainable Fishing Matters",
+    "subtitle": "Explore the importance of sustainable fishing practices and how they contribute to preserving marine ecosystems.",
+    "views": 10,
+    "comments": 1
+  },
+  {
+    "author": "Admin",
+    "date": "June 1, 2023",
+    "readTime": "5 min read",
+    "title": "The Ultimate Guide to Cooking with Fish",
+    "subtitle": "From selecting the right fish to perfecting your cooking techniques, this guide covers everything you need to know.",
+    "views": 30,
+    "comments": 3
+  }
+]

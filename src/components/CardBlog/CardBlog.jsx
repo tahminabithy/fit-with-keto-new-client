@@ -3,7 +3,8 @@ import blog from "../../assets/blogs/blog1.png";
 import admin from "../../assets/blogs/admin.png";
 import { FaClover } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
-export default function CardBlog() {
+export default function CardBlog({ post }) {
+  const { title } = post;
   return (
     <div>
       <div className="grid cols-1 lg:grid-cols-2">
@@ -30,7 +31,8 @@ export default function CardBlog() {
             </div>
           </div>
           <h3 className="text-xl font-medium my-4 text-baseColor">
-            Good fat vs bad fat
+            {/* Good fat vs bad fat */}
+            {title}
           </h3>
           <p className="text-sm font-extralight leading-5 text-justify tracking-normal my-4">
             Create a blog post subtitle that summaries your post in a few short,

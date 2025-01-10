@@ -5,7 +5,7 @@ import "./Navigation.css";
 export default function Navigation() {
   const navOptions = (
     <>
-      <li>
+      <li className="">
         <Link to="/">Home</Link>
       </li>
       <li>
@@ -16,9 +16,6 @@ export default function Navigation() {
       </li>
       <li>
         <Link to="/">Lifestyle</Link>
-      </li>
-      <li>
-        <Link to="/">Option</Link>
       </li>
       <li>
         <Link to="/">Contact</Link>
@@ -70,7 +67,7 @@ export default function Navigation() {
           </div>
           <a className="btn btn-ghost text-xl font">Fit With Keto</a>
         </div>
-        <div className="navbar-end hidden lg:flex">
+        <div className=" navbar-end hidden lg:flex mt-4">
           <ul className="menu menu-horizontal">{navOptions}</ul>
         </div>
       </div>
