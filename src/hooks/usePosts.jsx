@@ -1,16 +1,16 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-export default function usePosts() {
+export default function usePosts(value) {
   const axiosPublic = useAxiosPublic();
   const { isPending, data, error, refetch } = useQuery({
-    queryKey: ["posts"],
+    queryKey: ["posts", value],
     queryFn: async () => {
-      const response = await axiosPublic.get("/posts");
-      console.log(response.data);
-      return response.data.data;
+      const queryString = value ? `type=${value}` : "";
+      const response = await axiosPublic.get(`/posts?${queryString}`);
+      // console.log(response.data);
+      return response.data?.data || [];
     },
   });
-  return [data, refetch];
+  return { data, refetch };
 }

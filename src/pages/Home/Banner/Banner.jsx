@@ -4,7 +4,7 @@ import bannerImg from "../../../assets/banner/banner1.jpg";
 import { Link } from "react-router-dom";
 export default function Banner() {
   return (
-    <section className="h-96 lg:min-h-screen flex flex-col">
+    <section className="h-96 md:h-[40rem] flex flex-col">
       <div
         className="relative flex flex-grow items-center bg-cover bg-center bg-no-repeat py-8 md:py-16"
         style={{ backgroundImage: `url(${bannerImg})` }}

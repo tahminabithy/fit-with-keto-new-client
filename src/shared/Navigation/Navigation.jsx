@@ -9,13 +9,13 @@ export default function Navigation() {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/">About</Link>
+        <Link to="/about">About</Link>
       </li>
       <li>
-        <Link to="/">Recipes</Link>
+        <Link to="/recipes">Recipes</Link>
       </li>
       <li>
-        <Link to="/">Lifestyle</Link>
+        <Link to="/lifestyle">Lifestyle</Link>
       </li>
       <li>
         <Link to="/">Contact</Link>
@@ -33,7 +33,7 @@ export default function Navigation() {
         </Link>
       </li>
       <li>
-        <Link to="/">Log In</Link>
+        <Link to="/login">Log In</Link>
       </li>
     </>
   );

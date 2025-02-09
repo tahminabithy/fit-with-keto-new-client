@@ -7,11 +7,16 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaShare,
+  FaUser,
 } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { FaTrashCan } from "react-icons/fa6";
 
 export default function Detail({ data, refetch }) {
+  const [showComment, setShowComment] = useState(false);
+  console.log(showComment);
+
   const axiosPublic = useAxiosPublic();
   const [comment, setComment] = useState("");
   const formatDate = (isoDate) => {
@@ -30,6 +35,7 @@ export default function Detail({ data, refetch }) {
     const newComment = {
       text: comment,
       postId: data._id,
+      name: "Tahmina Akter",
       user: "677c76c4caea29823e7edf80",
     };
     console.log(newComment);
@@ -58,7 +64,17 @@ export default function Detail({ data, refetch }) {
         <h3 className="text-lg  md:text-xl font-semibold mt-4 md:mt-8 ">
           {data?.subtitle}
         </h3>
-        <img className=" mt-6" src={img} alt="" />
+        {/* <img
+          className="w-full h-[40rem] mt-6 object-cover"
+          src={data.img}
+          alt=""
+        /> */}
+        <img
+          className="w-full max-h-[40rem] mt-6 object-contain"
+          src={data.img}
+          alt=""
+        />
+
         <p className=" leading-relaxed md:leading-loose mt-6 md:mt-12 text-justify">
           {data.description}
         </p>
@@ -69,14 +85,54 @@ export default function Detail({ data, refetch }) {
           <FaLinkedinIn />
           <FaShare />
         </div>
-        <div className="border-t border-gray-300 mt-4 md:mt-8"></div>
+        <div className="border-t  mt-4 md:mt-8"></div>
         <div className="flex justify-between items-center gap-x-4 mt-4">
           <div className="flex gap-x-4 text-xs">
-            <p>0 likes</p>
-            <p>{data.comment.length} comments</p>
+            <p className="">0 likes</p>
+            <a onClick={() => setShowComment(!showComment)} className="link">
+              {data.comment.length} comments
+            </a>
           </div>
+          {/* Render Comments */}
+
           <FaHeart className="text-red-400" />
         </div>
+        {/* ---------------- */}
+        <div>
+          {data.comment.length > 0 ? (
+            showComment ? (
+              <div className="border border-gray-300 mt-6 p-6">
+                <div className="space-y-6">
+                  {data.comment.map((c, index) => (
+                    <div key={index} className="flex gap-4 items-start">
+                      <img
+                        className="w-10 h-10 rounded-full"
+                        src={admin}
+                        alt="User"
+                      />
+                      <div>
+                        <p className="">
+                          <p className="text-gray-800">{c.text}</p>
+                        </p>
+                        <div className="flex  items-center gap-x-2 text-xs mt-2 text-baseColor text-bold ">
+                          <FaUser /> <p>{c.name || "Anonymous"}</p>
+                          <p className="">{formatDate(c.createdAt)}</p>
+                          <FaTrashCan />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              ""
+            )
+          ) : (
+            <p className="text-gray-500 mt-4">No comments yet!</p>
+          )}
+        </div>
+
+        {/* --------------------- */}
       </div>
       <div className="mb-16 border border-gray-300 px-4 py-8 md:px-20 md:py-12">
         <p>Comments</p>
@@ -84,6 +140,7 @@ export default function Detail({ data, refetch }) {
         <form onSubmit={handleSubmit} action="">
           <input
             onChange={handleComment}
+            value={comment}
             placeholder="Write a comment..."
             className="py-4 border border-gray-400 w-full px-4 focus:outline-none"
             type="text"

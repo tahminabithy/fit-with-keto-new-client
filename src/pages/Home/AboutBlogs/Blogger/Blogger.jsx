@@ -2,6 +2,7 @@ import React from "react";
 import blogger from "../../../../assets/blogs/admin.png";
 import makePlan from "../../../../assets/blogs/makePlan.jpg";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Blogger() {
   return (
@@ -16,9 +17,11 @@ export default function Blogger() {
             ipsam nihil blanditiis aliquid, non excepturi veniam doloribus quas
             quibusdam ex autem!
           </p>
-          <p className="border-b border-gray-600 text-sm w-fit text-baseColor">
-            READ MORE
-          </p>
+          <Link to="/about">
+            <p className="border-b border-gray-600 text-sm w-fit text-baseColor">
+              READ MORE
+            </p>
+          </Link>
         </div>
       </div>
       {/* -------------------- */}

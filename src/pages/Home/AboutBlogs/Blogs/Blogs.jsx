@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Blogs({ post }) {
   return (
-    <div className="mb-12">
+    <div className="">
       <Link to={`/postDetails/${post._id}`}>
         <CardBlog post={post} />
       </Link>
