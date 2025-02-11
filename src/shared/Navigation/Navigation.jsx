@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaShopify, FaUserCircle } from "react-icons/fa";
 import "./Navigation.css";
+import { authContext } from "../../context/AuthProvider";
 export default function Navigation() {
+  const { user } = useContext(authContext);
   const navOptions = (
     <>
       <li className="">
@@ -18,7 +20,7 @@ export default function Navigation() {
         <Link to="/lifestyle">Lifestyle</Link>
       </li>
       <li>
-        <Link to="/">Contact</Link>
+        <Link to="/">Contact </Link>
       </li>
       <li>
         <Link to="/">
@@ -32,9 +34,15 @@ export default function Navigation() {
           <FaUserCircle className="w-6 h-6" />
         </Link>
       </li>
-      <li>
-        <Link to="/login">Log In</Link>
-      </li>
+      {user?.email ? (
+        <li>
+          <Link to="/login">Log Out</Link>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Log In</Link>
+        </li>
+      )}
     </>
   );
   return (

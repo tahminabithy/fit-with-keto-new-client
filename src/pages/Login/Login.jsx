@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import img from "../../assets/login2.jpg";
-import google from "../../assets/google.png";
-import { FaGoogle } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { authContext } from "../../context/AuthProvider";
+import GmailBtn from "../../components/GmailBtn/GmailBtn";
 
 export default function Login() {
+  const { loginUser } = useContext(authContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const axiosPublic = useAxiosPublic();
+  const from = location.state?.from?.pathname || "/";
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const result = await axiosPublic.post("/login", data);
+      console.log(result);
+      //   const decoded = jwt.verify(result.data.data.accessToken);
+      localStorage.setItem("accessToken", result.data.data.accessToken);
+      const user = {
+        email: result.data.data.email,
+        name: result.data.data.name,
+        // photo: result.data.data.photo,
+        role: result.data.data.role,
+        uid: result.data.data.uid,
+      };
+      loginUser(user);
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.log(error?.response?.data);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error?.response?.data.message,
+      });
+    }
   };
 
   return (
@@ -31,9 +61,9 @@ export default function Login() {
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 required
-                {...register("firstName")}
+                {...register("email")}
                 className="w-full border-b border-gray-300  p-2 mt-1  focus:outline-none"
                 placeholder="Enter your email"
               />
@@ -51,19 +81,11 @@ export default function Login() {
                 placeholder="Enter your password"
               />
             </div>
-            <div className="flex justify-center bg-white">
-              <img
-                className="w-8 h-8 bg-white"
-                src={google}
-                alt=""
-                style={{ backgroundColor: "transparent" }}
-              />
-              {/* <FaGoogle className="text-green-200 text-3xl" /> */}
-            </div>
+            <GmailBtn />
 
             <button
               type="submit"
-              className="w-full bg-baseColor text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-200 transition duration-300"
+              className=" w-full bg-baseColor text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-200 hover:text-baseColor transition duration-300"
             >
               Login
             </button>

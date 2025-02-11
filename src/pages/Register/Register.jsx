@@ -1,17 +1,37 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import img from "../../assets/login2.jpg";
-import google from "../../assets/google.png";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import GmailBtn from "../../components/GmailBtn/GmailBtn";
 
 export default function Register() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const { register, handleSubmit, reset } = useForm();
+  const axiosPublic = useAxiosPublic();
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const result = await axiosPublic.post("/register", data);
+      console.log(result);
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "User registered successfully",
+      });
+    } catch (error) {
+      console.log(error.response.data);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error.response.data.message,
+      });
+    }
+    reset();
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl grid grid-cols-1 md:grid-cols-2">
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-5xl grid grid-cols-1 md:grid-cols-2">
         {/* Left Side - Image */}
         <div className="block">
           <img className="w-full h-full object-cover" src={img} alt="Login" />
@@ -26,7 +46,7 @@ export default function Register() {
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
             <div>
               <label className="block text-gray-600 text-sm font-medium">
-                Username
+                Full name
               </label>
               <input
                 type="text"
@@ -61,15 +81,7 @@ export default function Register() {
                 placeholder="Enter your password"
               />
             </div>
-            <div className="flex justify-center bg-white">
-              <img
-                className="w-8 h-8 bg-white"
-                src={google}
-                alt=""
-                style={{ backgroundColor: "transparent" }}
-              />
-              {/* <FaGoogle className="text-green-200 text-3xl" /> */}
-            </div>
+            <GmailBtn />
 
             <button
               type="submit"
