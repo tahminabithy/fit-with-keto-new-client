@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import img from "../../assets/blogs/blog1.png";
+import React, { useContext, useState } from "react";
 import admin from "../../assets/blogs/admin.png";
 import {
   FaFacebookF,
@@ -9,15 +8,16 @@ import {
   FaShare,
   FaUser,
 } from "react-icons/fa";
-import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { FaTrashCan } from "react-icons/fa6";
+import { authContext } from "../../context/AuthProvider";
 
 export default function Detail({ data, refetch }) {
   const [showComment, setShowComment] = useState(false);
   console.log(showComment);
 
   const axiosPublic = useAxiosPublic();
+  const { user } = useContext(authContext);
   const [comment, setComment] = useState("");
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
@@ -35,8 +35,8 @@ export default function Detail({ data, refetch }) {
     const newComment = {
       text: comment,
       postId: data._id,
-      name: "Tahmina Akter",
-      user: "677c76c4caea29823e7edf80",
+      name: user.name,
+      user: user.uid,
     };
     console.log(newComment);
     try {
@@ -105,11 +105,14 @@ export default function Detail({ data, refetch }) {
                 <div className="space-y-6">
                   {data.comment.map((c, index) => (
                     <div key={index} className="flex gap-4 items-start">
-                      <img
-                        className="w-10 h-10 rounded-full"
+                      {/* <img
+                      
                         src={admin}
                         alt="User"
-                      />
+                      /> */}
+                      <div className="w-10 h-10 rounded-full bg-gray-200 text-baseColor border border-gray-300 flex justify-center items-center">
+                        <FaUser />
+                      </div>
                       <div>
                         <p className="">
                           <p className="text-gray-800">{c.text}</p>

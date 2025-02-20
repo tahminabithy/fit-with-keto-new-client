@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import img from "../../assets/login2.jpg";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import GmailBtn from "../../components/GmailBtn/GmailBtn";
+import { authContext } from "../../context/AuthProvider";
 
 export default function Register() {
+  const { gmailLogin, setUser } = useContext(authContext);
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const onSubmit = async (data) => {
@@ -29,6 +31,22 @@ export default function Register() {
     }
     reset();
   };
+  // const handleGmailLogin = async () => {
+  //   gmailLogin().then((result) => {
+  //     const user = {
+  //       name: result.displayName,
+  //       email: result.email,
+  //     };
+  //     console.log(user);
+  //     if (user) {
+  //       const result = axiosPublic.post("/register", user);
+  //       console.log(result);
+  //       navigate(from), { replace: true };
+  //     }
+
+  //     setUser(user);
+  //   });
+  // };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-5xl grid grid-cols-1 md:grid-cols-2">

@@ -7,6 +7,9 @@ import Recipes from "../pages/Recipes/Recipes";
 import About from "../pages/About/About";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./privateRoute";
+import Shop from "../pages/Shop/Shop";
+import ShopDetails from "../pages/ShopDetails/ShopDetails";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -17,8 +20,16 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/about",
+        element: <About />,
+      },
+      {
         path: "/postDetails/:id",
-        element: <PostDetails />,
+        element: (
+          <PrivateRoute>
+            <PostDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/lifestyle",
@@ -29,8 +40,17 @@ const Router = createBrowserRouter([
         element: <Recipes />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/shop/:id",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ShopDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -13,9 +13,9 @@ export default function LifeStyles() {
       <PlayCard title="Life Styles" banner={banner} />
       <div className="">
         <div className="mx-4 my-10 md:mx-20 md:my-20 ">
-          {data?.slice(0, 3).map((post) => (
-            <Link to={`/postDetails/${post._id}`}>
-              <CardBlog key={post._id} post={post} />
+          {data?.slice(0, 4).map((post) => (
+            <Link key={post._id} to={`/postDetails/${post._id}`}>
+              <CardBlog post={post} />
             </Link>
           ))}
         </div>

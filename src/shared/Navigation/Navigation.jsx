@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShopify, FaUserCircle } from "react-icons/fa";
 import "./Navigation.css";
 import { authContext } from "../../context/AuthProvider";
 export default function Navigation() {
-  const { user } = useContext(authContext);
+  const { user, setUser, logOut } = useContext(authContext);
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    await logOut();
+    navigate("/login");
+  };
   const navOptions = (
     <>
       <li className="">
@@ -19,12 +24,14 @@ export default function Navigation() {
       <li>
         <Link to="/lifestyle">Lifestyle</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/">Contact </Link>
+      </li> */}
+      <li>
+        <Link to="/shop">Shop</Link>
       </li>
       <li>
         <Link to="/">
-          {/* <FaCartShopping /> */}
           <FaShopify className="w-6 h-6 text-baseColor" />
         </Link>
       </li>
@@ -36,7 +43,7 @@ export default function Navigation() {
       </li>
       {user?.email ? (
         <li>
-          <Link to="/login">Log Out</Link>
+          <button onClick={handleLogout}>Logout</button>
         </li>
       ) : (
         <li>
