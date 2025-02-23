@@ -22,13 +22,14 @@ export default function GmailBtn() {
         const response = await axiosPublic.post("/gmailLogin", user);
         console.log(response.data);
         const userInfo = {
-          email: response.data.data.email,
+          email: response.data?.data?.email,
           name: response.data.data.name,
           role: response.data.data.role,
-          uid: response.data.data.uid,
+          uid: response.data?.data?.uid,
         };
         localStorage.setItem("accessToken", response.data.data.accessToken);
         setUser(userInfo);
+        console.log(userInfo);
         navigate(from, { replace: true });
       }
     } catch (error) {

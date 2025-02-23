@@ -9,7 +9,7 @@ import { useCart } from "../../hooks/useCart";
 export default function ShopDetails() {
   const { user } = useContext(authContext);
   const [isOpen, setIsOpen] = useState(false);
-  const { data, refetch } = useCart(user.uid);
+  const { data, refetch } = useCart(user?.uid);
   const axiosPublic = useAxiosPublic();
   const id = useParams();
   const toggole = () => {
@@ -30,7 +30,7 @@ export default function ShopDetails() {
 
   const handleAddToCart = async (body) => {
     const userCart = {
-      userId: user.uid,
+      userId: user?.uid,
       planId: id,
       quantity: 1,
       price: plan.price,
@@ -88,7 +88,7 @@ export default function ShopDetails() {
           </div>
         </div>
       </div>
-      <Drawer uid={user.uid} isOpen={isOpen} toggole={toggole} />
+      <Drawer uid={user?.uid} isOpen={isOpen} toggole={toggole} />
     </div>
   );
 }

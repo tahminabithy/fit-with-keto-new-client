@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaShopify, FaUserCircle } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import "./Navigation.css";
 import { authContext } from "../../context/AuthProvider";
+import Drawer from "../../components/Drawer/Drawer";
+import { FaCartShopping } from "react-icons/fa6";
+import { useCart } from "../../hooks/useCart";
 export default function Navigation() {
   const { user, setUser, logOut } = useContext(authContext);
+  const { data } = useCart(user?.uid);
   const navigate = useNavigate();
   const handleLogout = async () => {
     await logOut();
@@ -31,14 +35,17 @@ export default function Navigation() {
         <Link to="/shop">Shop</Link>
       </li>
       <li>
-        <Link to="/">
-          <FaShopify className="w-6 h-6 text-baseColor" />
+        <Link to="/order-summary" className=" relative">
+          <FaCartShopping className="w-6 h-6 text-baseColor" />
+          <span className="absolute text-pink-600 font-bold -top-1 right-1">
+            {data?.quantity}
+          </span>
         </Link>
       </li>
 
       <li>
         <Link to="/">
-          <FaUserCircle className="w-6 h-6" />
+          <FaUserCircle className="w-6 h-6 text-baseColor" />
         </Link>
       </li>
       {user?.email ? (

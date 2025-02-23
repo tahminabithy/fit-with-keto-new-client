@@ -33,13 +33,8 @@ export default function AuthProvider({ children }) {
   };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-      // localStorage.setItem("accessToken", user.accessToken);
       if (user) {
-        const userInfo = {
-          name: user.displayName,
-          email: user.email,
-        };
+        setUser(user);
       } else {
         localStorage.removeItem("accessToken");
         setUser(null);

@@ -10,6 +10,7 @@ import Register from "../pages/Register/Register";
 import PrivateRoute from "./privateRoute";
 import Shop from "../pages/Shop/Shop";
 import ShopDetails from "../pages/ShopDetails/ShopDetails";
+import OrderSummary from "../pages/OrderSummary/OrderSummary";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +50,15 @@ const Router = createBrowserRouter([
           <PrivateRoute>
             {" "}
             <ShopDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/order-summary",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <OrderSummary />
           </PrivateRoute>
         ),
       },
