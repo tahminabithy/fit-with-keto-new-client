@@ -28,7 +28,7 @@ export default function ShopDetails() {
       });
   }, []);
 
-  const handleAddToCart = async (body) => {
+  const handleAddToCart = async () => {
     const userCart = {
       userId: user?.uid,
       planId: id,
@@ -78,9 +78,31 @@ export default function ShopDetails() {
           >
             Add To Cart
           </button>
-          <button className="mt-6 font-extralight border border-black  bg-black text-white py-2 px-8 hover:bg-white  hover:text-black transition duration-300 ease-in-out shadow-md">
+          <button
+            className="mt-6 font-extralight border border-black  bg-black text-white py-2 px-8 hover:bg-white  hover:text-black transition duration-300 ease-in-out shadow-md"
+            onClick={() => document.getElementById("my_modal_1").showModal()}
+          >
             Buy Now
           </button>
+          <dialog id="my_modal_1" className="modal">
+            <div className="modal-box ">
+              <h3 className="font-semibold text-2xl text-center">
+                We can't accept online orders right now
+              </h3>
+              <p className="py-4 text-center ">
+                Please contact us to complete your purchase.
+              </p>
+              <div className="modal-action">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn bg-black text-white">Got It</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+          {/* <button className="mt-6 font-extralight border border-black  bg-black text-white py-2 px-8 hover:bg-white  hover:text-black transition duration-300 ease-in-out shadow-md">
+            Buy Now
+          </button> */}
           <div className="flex justify-center md:justify-start  gap-4 mt-8">
             <FaWhatsapp />
             <FaFacebook />
