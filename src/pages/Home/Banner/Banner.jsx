@@ -16,7 +16,7 @@ export default function Banner() {
         <div className="relative z-10 max-w-screen-lg mx-auto px-6 md:px-10 lg:px-16 text-left">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-wider lg:leading-relaxed text-white">
             <span className="block">Welcome to The</span>
-            <span className="block">House of Keto</span>
+            <span className="block">Fit With Keto</span>
           </h1>
           <p className="mt-4 text-md md:text-xl font-extralight text-white">
             Get into a low carb lifestyle with an easy-to-follow meal plans.

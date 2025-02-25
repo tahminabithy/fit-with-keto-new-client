@@ -4,7 +4,6 @@ import { useCart } from "../../hooks/useCart";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import MyCart from "../MyCart/MyCart";
 
 export default function Drawer({ uid, isOpen, toggole }) {
   const axiosPublic = useAxiosPublic();
@@ -31,7 +30,7 @@ export default function Drawer({ uid, isOpen, toggole }) {
         console.log(result);
         Swal.fire({
           title: "Deleted!",
-          text: "Your file has been deleted.",
+          text: "Items has been deleted.",
           icon: "success",
         });
       }

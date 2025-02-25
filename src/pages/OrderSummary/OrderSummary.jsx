@@ -52,9 +52,9 @@ export default function OrderSummary() {
             data.items.map((item) => (
               <div
                 key={item._id || item.product.toString()}
-                className="flex flex-col md:flex-row items-center justify-between border-b border-gray-300 py-4"
+                className="flex flex-col md:flex-row  justify-between border-b border-gray-300 py-4"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex  items-center gap-4">
                   <img
                     className="w-32 h-32 object-contain"
                     src={item?.product?.img}
