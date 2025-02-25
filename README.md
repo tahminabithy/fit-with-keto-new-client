@@ -1,8 +1,42 @@
-# React + Vite
+# Fit With Keto - Health Blog & Keto Meal Plan Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Fit With Keto** is a health-focused blogging platform and e-commerce website where users can read insightful blogs about wellness, nutrition, and the keto lifestyle. In addition to engaging content, users can explore and purchase customized **keto diet plans** to support their health goals.
 
-Currently, two official plugins are available:
+## Live Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Visit Fit With Keto](https://fit-with-keto.web.app/)
+
+---
+
+## Features
+
+### User Features
+
+- Read health and nutrition blogs
+- Get blogs and meal plans by category
+- Purchase well-structured keto meal plans
+- Contact support via email, Facebook Messenger, or direct message
+
+### Blogger Features
+
+- Write and publish blogs about health and nutrition
+- Upload images to enhance blog content
+- Edit and delete personal blog posts
+
+### Admin Features
+
+- Approve or reject blog posts for quality control
+- Manage users and their activity
+- View and manage keto plan purchases
+
+---
+
+## Installation Guide
+
+````bash
+npm install
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/fit-with-keto.git
+cd fit-with-keto
+````
