@@ -44,9 +44,9 @@ export default function Shop() {
         Shop Meal Plans
       </p>
       <p className="text-center text-baseColor font-light lg:w-1/2 mx-auto">
-        This is your category description. It’s a great place to tell customers
-        what this category is about, connect with your audience, and draw
-        attention to your products.
+        Explore our curated plan lists that cater to your health goals. Each
+        plan offers balanced, delicious recipes, practical grocery guides, and
+        expert tips to support your ketogenic journey.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-x-16 my-10 p-8">
         {plans.map((plan) => (

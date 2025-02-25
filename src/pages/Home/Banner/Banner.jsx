@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "../../../shared/Navigation/Navigation";
 import bannerImg from "../../../assets/banner/banner1.jpg";
 import { Link } from "react-router-dom";
 export default function Banner() {
