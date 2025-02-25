@@ -21,9 +21,11 @@ export default function Banner() {
           <p className="mt-4 text-md md:text-xl font-extralight text-white">
             Get into a low carb lifestyle with an easy-to-follow meal plans.
           </p>
-          <button className="mt-8 font-extralight border border-white text-white py-2 px-8 hover:bg-white hover:text-black transition duration-300 ease-in-out shadow-md">
-            SHOP PLANS
-          </button>
+          <Link to="/shop">
+            <button className="mt-8 font-extralight border border-white text-white py-2 px-8 hover:bg-white hover:text-black transition duration-300 ease-in-out shadow-md">
+              SHOP PLANS
+            </button>
+          </Link>
         </div>
       </div>
     </section>

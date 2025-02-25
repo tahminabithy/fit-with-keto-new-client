@@ -11,6 +11,7 @@ import PrivateRoute from "./privateRoute";
 import Shop from "../pages/Shop/Shop";
 import ShopDetails from "../pages/ShopDetails/ShopDetails";
 import OrderSummary from "../pages/OrderSummary/OrderSummary";
+import AllPost from "../pages/AllPosts/AllPost";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,10 @@ const Router = createBrowserRouter([
         element: <Shop />,
       },
       {
+        path: "/all-posts",
+        element: <AllPost />,
+      },
+      {
         path: "/shop/:id",
         element: (
           <PrivateRoute>
@@ -53,6 +58,7 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/order-summary",
         element: (

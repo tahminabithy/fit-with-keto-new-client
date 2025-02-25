@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import { authContext } from "../../context/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -10,15 +10,30 @@ export default function OrderSummary() {
   const { user } = useContext(authContext);
   const { data, refetch } = useCart(user?.uid);
   const axiosPublic = useAxiosPublic();
-
+  const handleAdd = async (planId, price) => {
+    const info = {
+      userId: data?.userId,
+      planId: planId,
+      quantity: 1,
+      price: price,
+    };
+    try {
+      console.log(info);
+      const res = await axiosPublic.post("/add-to-cart", info);
+      console.log(res.data);
+      refetch();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleDeleteItem = async (itemId, price, quantity) => {
     const cartInfo = {
       cartId: data?._id,
       itemId: itemId,
-      price: price,
+      price: price * quantity,
       quantity: quantity,
     };
-
+    console.log(cartInfo);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -31,11 +46,11 @@ export default function OrderSummary() {
       if (result.isConfirmed) {
         const deleteRes = await axiosPublic.post("/remove-from-cart", cartInfo);
         console.log(deleteRes.data);
-        Swal.fire({
-          title: "Deleted!",
-          text: "The item has been removed from your cart.",
-          icon: "success",
-        });
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "The item has been removed from your cart.",
+        //   icon: "success",
+        // });
         refetch();
       }
     });
@@ -43,11 +58,11 @@ export default function OrderSummary() {
 
   return (
     <div className="m-4 lg:mx-20 py-6 lg:my-16">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 gap-20">
         {/* Cart Items Section */}
         <div className="col-span-2">
           <h2 className="text-2xl font-semibold mb-4">My Cart</h2>
-          <hr className="border-gray-400 mb-6" />
+          <hr className="border-gray-400 md:mb-6" />
           {data?.items && data.items.length > 0 ? (
             data.items.map((item) => (
               <div
@@ -69,13 +84,31 @@ export default function OrderSummary() {
                 </div>
                 <div className="flex items-center gap-6 mt-4 md:mt-0">
                   <div className="flex items-center border border-gray-500 rounded">
-                    <button className="px-2 py-1 text-gray-700">
+                    <button
+                      onClick={() =>
+                        handleAdd(
+                          item?.product._id,
+                          item?.product?.price,
+                          item?.quantity
+                        )
+                      }
+                      className="px-2 py-1 text-gray-700"
+                    >
                       <FaPlus />
                     </button>
                     <span className="px-3 text-base font-semibold text-baseColor">
                       {item?.quantity}
                     </span>
-                    <button className="px-2 py-1 text-gray-700">
+                    <button
+                      onClick={() =>
+                        handleDeleteItem(
+                          item?.product._id,
+                          item?.product.price,
+                          1
+                        )
+                      }
+                      className="px-2 py-1 text-gray-700"
+                    >
                       <FaMinus />
                     </button>
                   </div>
@@ -85,9 +118,9 @@ export default function OrderSummary() {
                   <button
                     onClick={() =>
                       handleDeleteItem(
-                        item.product._id,
-                        item.product.price,
-                        item.quantity
+                        item?.product._id,
+                        item?.product.price,
+                        item?.quantity
                       )
                     }
                     className="text-red-600 hover:text-red-800"

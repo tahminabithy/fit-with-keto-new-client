@@ -49,7 +49,7 @@ export default function CardBlog({ post }) {
           </div>
           <h3 className="text-xl font-medium my-4 text-baseColor">{title}</h3>
           <p className="text-sm font-extralight leading-5 text-justify tracking-normal my-4">
-            {description.slice(0, 150)}...
+            {description.slice(0, 90)}.....
           </p>
           <div>
             <div className="lg:absolute lg:bottom-6 left-0 w-full md:px-6">

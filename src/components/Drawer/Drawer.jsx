@@ -66,13 +66,13 @@ export default function Drawer({ uid, isOpen, toggole }) {
                   <div className="flex justify-between gap-x-4 my-4 ">
                     <img
                       className="w-20 h-20 object-contain"
-                      src={item.product.img}
+                      src={item?.product?.img}
                       alt=""
                     />
                     <div className="flex justify-between items-start w-full">
                       <div>
-                        <p className=""> {item.product.name}</p>
-                        <p className="text-xs">$ {item.product.price}</p>
+                        <p className=""> {item?.product?.name}</p>
+                        <p className="text-xs">$ {item?.product?.price}</p>
                         <div className="border border-gray-700 flex items-center justify-center gap-x-2 h-8 w-16 my-4 px-2">
                           <FaPlus />
                           {item?.quantity}

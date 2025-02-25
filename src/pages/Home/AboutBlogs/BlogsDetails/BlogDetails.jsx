@@ -2,6 +2,7 @@ import React from "react";
 import Blogs from "../Blogs/Blogs";
 import Blogger from "../blogger/blogger";
 import usePosts from "../../../../hooks/usePosts";
+import { Link } from "react-router-dom";
 
 export default function BlogDetails() {
   const { data } = usePosts("");
@@ -14,9 +15,11 @@ export default function BlogDetails() {
             <Blogs key={post._id} post={post}></Blogs>
           ))}
           <div className="flex justify-center items-center">
-            <button className="font-extralight border border-baseColor text-baseColor py-2 px-8 hover:bg-baseColor hover:text-white transition duration-300 ease-in-out shadow-md">
-              SEE ALL POSTS
-            </button>
+            <Link to="all-posts">
+              <button className="font-extralight border border-baseColor text-baseColor py-2 px-8 hover:bg-baseColor hover:text-white transition duration-300 ease-in-out shadow-md">
+                SEE ALL POSTS
+              </button>
+            </Link>
           </div>
         </div>
         <div>

@@ -48,9 +48,16 @@ export default function Blogger() {
         <div className="">
           <p className="text-extralight text-white">YOU CAN ALSO FIND ME ON</p>
           <div className="flex justify-center items-center gap-4 text-white mt-4">
-            <FaFacebook />
+            <a href="https://www.facebook.com/">
+              {" "}
+              <FaFacebook />
+            </a>
+            <a href="https://www.linkedin.com/in/tahmina-akter-bithy/"></a>
+
             <FaLinkedin />
-            <FaInstagram />
+            <a href="https://www.instagram.com/">
+              <FaInstagram />
+            </a>
           </div>
         </div>
       </div>

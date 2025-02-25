@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import img from "../../assets/login2.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import GmailBtn from "../../components/GmailBtn/GmailBtn";
@@ -19,7 +19,7 @@ export default function Register() {
       Swal.fire({
         icon: "success",
         title: "Success",
-        text: "User registered successfully",
+        text: "Your account has been created successfully",
       });
     } catch (error) {
       console.log(error.response.data);

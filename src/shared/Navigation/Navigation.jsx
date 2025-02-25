@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import "./Navigation.css";
 import { authContext } from "../../context/AuthProvider";
-import Drawer from "../../components/Drawer/Drawer";
 import { FaCartShopping } from "react-icons/fa6";
 import { useCart } from "../../hooks/useCart";
 export default function Navigation() {

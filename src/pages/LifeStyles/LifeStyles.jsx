@@ -20,9 +20,11 @@ export default function LifeStyles() {
           ))}
         </div>
         <div className="flex justify-center items-center ">
-          <button className="font-extralight border border-baseColor text-baseColor py-2 px-8 hover:bg-baseColor hover:text-white transition duration-300 ease-in-out shadow-md">
-            SEE ALL POSTS
-          </button>
+          <Link to="/all-posts">
+            <button className="font-extralight border border-baseColor text-baseColor py-2 px-8 hover:bg-baseColor hover:text-white transition duration-300 ease-in-out shadow-md">
+              SEE ALL POSTS
+            </button>
+          </Link>
         </div>
       </div>
     </div>
