@@ -37,6 +37,6 @@
 npm install
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/fit-with-keto.git
+git clone https://github.com/tahminabithy/fit-with-keto-new-client.git
 cd fit-with-keto
 ````
